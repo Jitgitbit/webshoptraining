@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import DevelopersList from "./components/DevelopersList";
+import Homepage from "./components/Homepage";
+import "./App.css";
+import Toolbar from "./components/Toolbar";
+import PostPage from "./components/PostPage";
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Toolbar/>
+        <Switch>
+          <Route path="/developers" component={DevelopersList} />
+          <Route path="/read/:id" component={PostPage} />
+          <Route component={Homepage} />
+        </Switch>
+      </div>
+    );
+  }
 }
-
-export default App;
