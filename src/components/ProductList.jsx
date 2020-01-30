@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchProducts } from '../store/products/actions';
+import { productAdded } from '../store/cart/actions';
 import { connect } from "react-redux";
 import Product from './Product';
 //import api from "../api";
@@ -20,7 +21,14 @@ class ProductList extends Component {
       console.log(this.props);
     // dispatch the "thunk" (function) itself
     this.props.dispatch(fetchProducts);
-    }
+  }
+
+  handleAddToCart = (productId) => {
+    console.log("Adding product to cart", productId)
+    this.props.dispatch(productAdded(productId))
+  }
+
+  
   render() {
     if(this.props.data){console.log('The products data', this.props.data)}
     const loading = !this.props.data;
@@ -30,7 +38,7 @@ class ProductList extends Component {
           {loading ? <p>Loading...</p> : <h2>We have {this.props.data.length} products!</h2>} 
         <h2>
           {!loading && this.props.data.map((product, index) => (          
-            <Product name={product.name} price={product.price} key={index}/>      // key again! react!
+            <Product name={product.name} price={product.price} imageUrl={product.imageUrl} id={product.id} key={index} handleClick={() => this.handleAddToCart(product.id)}/>      // key again! react!
             ))
           }
         </h2>

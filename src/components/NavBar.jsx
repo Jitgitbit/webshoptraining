@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Cart from './Cart';
+import { connect } from "react-redux";
 
-export default class NavBar extends Component {
+
+class NavBar extends Component {
   render() {
     return (
       <div
@@ -14,10 +15,21 @@ export default class NavBar extends Component {
         padding: "15px"
       }}
       >
-        <Cart/>
+        <Link to='/checkout'>Checkout Page</Link>
         <Link to='/'>Homepage</Link>
         <Link to='/products'>Products List</Link>
+        <div>
+          <h3>Cart!</h3>
+        <span>{this.props.cartItems.length}</span>
+        </div>
       </div>
     )
   }
 }
+function mapStateToProps(reduxState) {
+  console.log("redux state?", reduxState);
+ return {
+   cartItems: reduxState.cart,
+ };
+}
+export default connect(mapStateToProps)(NavBar);

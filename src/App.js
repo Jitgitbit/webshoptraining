@@ -4,6 +4,7 @@ import ProductList from "./components/ProductList";
 import Homepage from "./components/Homepage";
 import "./App.css";
 import NavBar from "./components/NavBar";
+import CheckoutPage from "./components/CheckoutPage";
 
 export default class App extends React.Component {
   render() {
@@ -12,6 +13,7 @@ export default class App extends React.Component {
         <NavBar/>
         <Switch>
           <Route path="/products" component={ProductList} />
+          <Route path="/checkout" component={CheckoutPage}/>
           <Route component={Homepage} />
         </Switch>
       </div>
