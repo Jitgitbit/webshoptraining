@@ -1,7 +1,7 @@
 const initialState = null;
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "developers/FETCHED": {
+    case "products/FETCHED": {
       // => Ask yourself: what is action.payload?
       return action.payload;
     }

@@ -1,18 +1,18 @@
 import api from "../../api"; //check the structure!
 
-export function developersFetched(data) {
+export function productsFetched(data) {
   console.log(data);
   return {
-    type: "developers/FETCHED",
+    type: "products/FETCHED",
     payload: data
   };
 }
 
-export function fetchDevelopers(dispatch, getState) {
+export function fetchProducts(dispatch, getState) {
   console.log(dispatch);
-  api("/developers")
+  api("/products")
     .then(data => {
       // note: just `dispatch` here now
-      dispatch(developersFetched(data));
+      dispatch(productsFetched(data));
     });
 }

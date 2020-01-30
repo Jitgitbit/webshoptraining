@@ -6,7 +6,7 @@ export default class Homepage extends Component {
       <div>
         <h1>WebShop training!</h1>
         <h3>
-        Here you will have two links presented
+        Here you will have two links presented and a cart
         </h3>
       </div>
     )
