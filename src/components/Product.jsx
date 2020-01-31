@@ -11,7 +11,7 @@ export default class Product extends Component {
         {/* <h4>Product: {this.props.name} </h4> <img src={this.props.imageUrl}/>
         <h5>Price: {this.props.price} <Button onClick={this.props.handleClick}>add this to Cart</Button></h5> */}
         <Card className="Product" bg="info" text="white" style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={this.props.imageUrl} alt='NO PHOTO PROVIDED'/>
+          <Card.Img variant="top" src={this.props.imageUrl} alt=''/>
           <Card.Body>
             <Card.Title>{this.props.name}</Card.Title>
             <Card.Text>

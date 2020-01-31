@@ -8,12 +8,18 @@ export default function reducer(state = initialState, action) {
       if (!isInCart) {
         return [
           ...state,
-          { productId: newProductId, quantity: 1 }
+          {
+            productId: newProductId, 
+            quantity: 1
+          }
         ]
       } else {
         const updatedCart = state.map(el => el.productId === newProductId ? { ...el, quantity: el.quantity + 1} : el)
         return updatedCart
       }
+    }
+    case "cart/CLEARED": {
+      return [];
     }
     default: {
       return state;
