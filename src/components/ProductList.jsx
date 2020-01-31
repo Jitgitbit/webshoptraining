@@ -18,7 +18,7 @@ class ProductList extends Component {
       //   // });
       //   this.props.dispatch(productsFetched(data));
       // });
-      console.log(this.props);
+      //console.log(this.props);
     // dispatch the "thunk" (function) itself
     this.props.dispatch(fetchProducts);
   }
@@ -30,7 +30,7 @@ class ProductList extends Component {
 
   
   render() {
-    if(this.props.data){console.log('The products data', this.props.data)}
+    if(this.props.data){console.log('The products data', this.props.data)};
     const loading = !this.props.data;
     return (
       <div>
@@ -38,7 +38,8 @@ class ProductList extends Component {
           {loading ? <p>Loading...</p> : <h2>We have {this.props.data.length} products!</h2>} 
         <h2>
           {!loading && this.props.data.map((product, index) => (          
-            <Product name={product.name} price={product.price} imageUrl={product.imageUrl} id={product.id} key={index} handleClick={() => this.handleAddToCart(product.id)}/>      // key again! react!
+            <Product name={product.name} price={product.price} imageUrl={product.imageUrl}
+             id={product.id} key={index} handleClick={() => this.handleAddToCart(product.id)}/>      // key again! react!
             ))
           }
         </h2>

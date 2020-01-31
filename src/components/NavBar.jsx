@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 class NavBar extends Component {
   render() {
-    console.log(this.props.cartItems)
+    //console.log(this.props.cartItems)
     return (
       <div
       style={{
@@ -37,7 +37,7 @@ class NavBar extends Component {
   }
 }
 function mapStateToProps(reduxState) {
-  console.log("redux state?", reduxState);
+  //console.log("redux state?", reduxState);
  return {
    cartItems: reduxState.cart,
  };
