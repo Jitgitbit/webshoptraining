@@ -1,35 +1,19 @@
-const initialState = []
+const initialstate = [];
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = initialstate, action) {
   switch (action.type) {
-    case "cart/ADDED": {
-      const newProductId = action.payload;
-      const isInCart = state.find(el => el.productId === newProductId);
-      if (!isInCart) {
-        return [
-          ...state,
-          {
-            productId: newProductId, 
-            quantity: 1
-          }
-        ]
-      } else {
-        const updatedCart = state.map(el => el.productId === newProductId ? { ...el, quantity: el.quantity + 1} : el)
-        return updatedCart
-      }
+    case 'cart/ADD': {
+      return [...state, action.payload];
     }
-    case "cart/CLEARED": {
+    case 'cart/REMOVE': {
+      return state.filter((item) => item.id !== action.payload.id);
+    }
+    case 'cart/CLEAR': {
       return [];
     }
+
     default: {
       return state;
     }
   }
 }
-
-/*
-
-initalState = []
-
-state = [{productId: 1, quantity: 1}]
-*/

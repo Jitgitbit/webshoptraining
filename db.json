@@ -75,7 +75,7 @@
       {
           "id": 10,
           "categoryId": 1,
-          "name": "Product 10",
+          "name": "Apples",
           "imageUrl": "https://picsum.photos/400?image=601",
           "inStock": false,
           "price": "1823"
@@ -83,7 +83,7 @@
       {
           "id": 11,
           "categoryId": 1,
-          "name": "Product 11",
+          "name": "Bananas",
           "imageUrl": "https://picsum.photos/400?image=314",
           "inStock": true,
           "price": "1752"
@@ -131,7 +131,7 @@
       {
           "id": 17,
           "categoryId": 1,
-          "name": "Product 17",
+          "name": "Peaches",
           "imageUrl": "https://picsum.photos/400?image=264",
           "inStock": true,
           "price": "2523"
@@ -164,19 +164,19 @@
 "categories": [
   {
       "id": 1,
-      "name": "Category 1"
+      "name": "Fruits"
   },
   {
       "id": 2,
-      "name": "Category 2"
+      "name": "Candy"
   },
   {
       "id": 3,
-      "name": "Category 3"
+      "name": "Drinks"
   },
   {
       "id": 4,
-      "name": "Category 4"
+      "name": "Other"
   }
 ]
 }

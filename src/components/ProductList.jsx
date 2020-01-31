@@ -1,58 +1,61 @@
-import React, { Component } from 'react';
-import { fetchProducts } from '../store/products/actions';
-import { productAdded } from '../store/cart/actions';
-import { connect } from "react-redux";
-import Product from './Product';
-//import api from "../api";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Card, Button } from '@material-ui/core';
+import { fetchProducts } from '../store/products/action';
+import { addToCart } from '../store/cart/action';
+import './ProductList.css';
 
-
-class ProductList extends Component {
+// The "unconnected" inner component:
+class ProductList extends React.Component {
   componentDidMount() {
-      // api("/products")
-      //   .then(data => {
-      //   console.log('data from', data )
-      //   // Tell the Redux store the data has been fetched
-      //   // this.props.dispatch({
-      //   //   type: "products/FETCHED",
-      //   //   payload: data,
-      //   // });
-      //   this.props.dispatch(productsFetched(data));
-      // });
-      //console.log(this.props);
-    // dispatch the "thunk" (function) itself
     this.props.dispatch(fetchProducts);
   }
 
-  handleAddToCart = (productId) => {
-    console.log("Adding product to cart", productId)
-    this.props.dispatch(productAdded(productId))
+  addWasClicked(product) {
+    console.log('I click add for ', product);
+    this.props.dispatch(addToCart(product));
   }
 
-  
   render() {
-    if(this.props.data){console.log('The products data', this.props.data)};
-    const loading = !this.props.data;
+    const allProducts = this.props.products;
+    const loading = !allProducts;
+    const categoryId = parseInt(this.props.match.params.catId, 10);
+
+    const filteredProducts = allProducts
+      ? allProducts.filter((product) => product.categoryId === categoryId)
+      : [];
+
+
     return (
       <div>
-        <h1>Products!</h1>
-          {loading ? <p>Loading...</p> : <h2>We have {this.props.data.length} products!</h2>} 
-        <div className='ProductContainer'>
-          {!loading && this.props.data.map((product, index) => (          
-            <Product name={product.name} price={product.price} imageUrl={product.imageUrl}
-             id={product.id} key={index} handleClick={() => this.handleAddToCart(product.id)}/>      // key again! react!
-            ))
-          }
-        </div>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div>
+            <p>We have {filteredProducts.length} products!</p>
+            {filteredProducts.map((prod) => (
+              <Card className="product-card" key={prod.id}>
+                {prod.name}
+                <br />
+                <Button
+                  color="primary"
+                  variant="contained"
+                  onClick={() => this.addWasClicked(prod)}
+                >
+                  Add
+                </Button>
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
     );
   }
 }
-function mapStateToProps(reduxState) {
-  console.log("redux state?", reduxState);
- return {
-   data: reduxState.products,
- };
-}
-// ...which is what we export as the default (only) export
-export default connect(mapStateToProps)(ProductList);
 
+function mapStateToProps(reduxState) {
+  return {
+    products: reduxState.products,
+  };
+}
+export default connect(mapStateToProps)(ProductList);

@@ -1,23 +1,27 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import ProductList from "./components/ProductList";
-import Homepage from "./components/Homepage";
-import "./App.css";
-import NavBar from "./components/NavBar";
-import CheckoutPage from "./components/CheckoutPage";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import './App.css';
+import { Switch, Route } from 'react-router';
+import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
+import CategoryList from './components/CategoryList';
+import ProductList from './components/ProductList';
+import Cart from './components/Cart';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <NavBar/>
-        <Switch>
-          <Route path="/products" component={ProductList} />
-          <Route path="/checkout" component={CheckoutPage}/>
-          <Route component={Homepage} />
-        </Switch>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <Grid>
+      <Cart />
+      <br /><hr />
+      <CategoryList />
+
+      <Switch>
+        <Route path="/categories/:catId/products" component={ProductList} />
+        <Route path="/beetle">Beetle</Route>
+        <Route path="/cat">Cat
+        </Route>
+      </Switch>
+    </Grid>
+  );
 }
+
+export default App;
