@@ -36,13 +36,13 @@ class ProductList extends Component {
       <div>
         <h1>Products!</h1>
           {loading ? <p>Loading...</p> : <h2>We have {this.props.data.length} products!</h2>} 
-        <h2>
+        <div className='ProductContainer'>
           {!loading && this.props.data.map((product, index) => (          
             <Product name={product.name} price={product.price} imageUrl={product.imageUrl}
              id={product.id} key={index} handleClick={() => this.handleAddToCart(product.id)}/>      // key again! react!
             ))
           }
-        </h2>
+        </div>
       </div>
     );
   }

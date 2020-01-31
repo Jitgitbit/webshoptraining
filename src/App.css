@@ -1,5 +1,12 @@
+html{
+  text-align: center;
+  background-color: #282c34;
+  color: white;
+}
 .App {
   text-align: center;
+  background-color: #282c34;
+  color: white;
 }
 
 .App-logo {
@@ -35,4 +42,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+.Cart{
+  color: white;
+}
+.ProductContainer{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+.Product{
+  margin: 10px;
 }

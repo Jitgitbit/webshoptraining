@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+//import Nav from 'react-bootstrap/Nav';
 
 
 class NavBar extends Component {
@@ -20,7 +21,6 @@ class NavBar extends Component {
         <Link to='/'>Homepage</Link>
         <Link to='/products'>Products List</Link>
         <div>
-          <h3>Cart!</h3>
         {/* <span>{this.props.cartItems.length}</span> */}
         {/* <span>{this.props.cartItems.reduce((unique, next) => {
           if(!unique.some(obj => obj.productId === next.productId)){
@@ -28,11 +28,29 @@ class NavBar extends Component {
           }
           return unique;
         }, [])}</span> */}
-        <span>{this.props.cartItems.reduce((acc, currObject) => {
+        <span className="Cart"><h3>Cart!</h3>{this.props.cartItems.reduce((acc, currObject) => {
           return acc + currObject.quantity
         }, 0)}</span>
         </div>
       </div>
+    //  <div>
+    //     <Nav variant="pills">
+    //       <Nav.Item>
+    //         <Nav.Link href="/">Home</Nav.Link>
+    //       </Nav.Item>
+    //       <Nav.Item>
+    //         <Nav.Link href="/products">Products List</Nav.Link>
+    //       </Nav.Item>
+    //       <Nav.Item>
+    //       <Nav.Link href="/checkout">Checkout Page</Nav.Link>
+    //       </Nav.Item>
+        
+    //       <span>{this.props.cartItems.reduce((acc, currObject) => {
+    //         return acc + currObject.quantity
+    //       }, 0)}</span>
+        
+    //     </Nav>
+    //   </div>
     )
   }
 }
