@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import CheckoutPage from "./components/CheckoutPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends React.Component {
   render() {
